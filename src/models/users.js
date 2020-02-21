@@ -38,15 +38,15 @@ module.exports = {
     return true;
   },
   /**
-     * Delete user by id
-     *
-     * @param  {number} id   user id
-     * @param  {Object} userParams user fields to update
-     * @return {Object}      user
-     */
+   * Delete user by id
+   *
+   * @param  {number} id   user id
+   * @param  {Object} userParams user fields to update
+   * @return {Object}      user
+   */
   async deleteUserById(id) {
     const allUsers = this.getAllUsers();
-    const newUsers = allUsers.fill((item) => item.id != id);
+    const newUsers = allUsers.filter((item) => item.id != id);
 
     await this.saveInFile(newUsers);
     return true;
